@@ -13,8 +13,7 @@ SRC = scrypt/lib/crypto/crypto_scrypt.c \
 	  scrypt/libcperciva/util/warnp.c \
       c_src/scrypt_nif.c 
 
-
-ERTS_INCLUDE_PATH = $(shell erl -noshell -s init stop -eval "io:setopts(standard_io, [{encoding, unicode}]), io:format(\"~ts/erts-~ts/include/\", [code:root_dir(), erlang:system_info(version)]).")
+ERTS_INCLUDE_PATH = $(shell erl -noshell -eval "io:format(\"~s/erts-~s/include/\", [code:root_dir(), erlang:system_info(version)]), halt().")
 CFLAGS += -pthread -O3 -std=c99 -pedantic -Wall -g -O0 -I$(INC_CFG) \
 			-I$(INC_LIB) \
 			-I$(INC_CPU) \
